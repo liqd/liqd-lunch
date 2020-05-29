@@ -27,3 +27,9 @@ In a new terminal:
 cd liqd_lunch/frontend/
 npm start
 ```
+
+###install axios from npm
+```
+deactivate
+npm install axios --save
+``` 
