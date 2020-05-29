@@ -15,3 +15,8 @@ cd liqd_lunch/
 python manage.py migrate
 python manage.py runserver
 ```
+
+### run react application
+#open a new terminal
+cd liqd_lunch/frontend/
+npm start
