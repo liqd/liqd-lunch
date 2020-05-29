@@ -9,6 +9,11 @@ source venv/bin/activate
 pip install django djangorestframework django-cors-headers
 ```
 
+### Create superuser
+```
+python manage.py createsuperuser
+```
+
 ### run the migrations and start the server
 ```
 cd liqd_lunch/
@@ -17,6 +22,8 @@ python manage.py runserver
 ```
 
 ### run react application
-#open a new terminal
+In a new terminal:
+```
 cd liqd_lunch/frontend/
 npm start
+```
