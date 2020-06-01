@@ -9,6 +9,8 @@ source venv/bin/activate
 pip install django djangorestframework django-cors-headers
 deactivate
 npm install axios --save
+cd liqd_lunch/frontend/
+npm install --save react-router-dom
 ```
 
 ### Create superuser

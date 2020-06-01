@@ -27,6 +27,6 @@ export default class RestaurantsService{
         return axios.post(url,restaurant);
     }
     updateRestaurant(restaurant){
-        const url = `${API_URL}/api/restaurant/${restaurant.pk}`;
+        const url = `${API_URL}/api/restaurants/${restaurant.pk}`;
         return axios.put(url,restaurant);
     }}
