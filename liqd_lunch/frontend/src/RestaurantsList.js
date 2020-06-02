@@ -1,6 +1,8 @@
 import  React, { Component } from  'react';
+import  ResistanceService from  './ResistanceService';
 import  RestaurantsService from  './RestaurantsService';
 
+const  resistanceService  =  new  ResistanceService();
 const  restaurantsService  =  new  RestaurantsService();
 
 class  RestaurantsList  extends  Component {
@@ -13,6 +15,7 @@ class  RestaurantsList  extends  Component {
         };
         this.nextPage  =  this.nextPage.bind(this);
         this.handleDelete  =  this.handleDelete.bind(this);
+        this.handleResistanceCreate  =  this.handleResistanceCreate.bind(this);
     }
 
     componentDidMount() {
@@ -31,6 +34,20 @@ class  RestaurantsList  extends  Component {
             });
 
             self.setState({restaurants:  newArr})
+        });
+    }
+
+    handleResistanceCreate(e,rest_pk){
+        var  self  =  this;
+        resistanceService.createResistance(
+          {
+            "restaurant":  rest_pk,
+            "resistance": 5
+        }
+        ).then((result)=>{
+          alert("Resistance created!");
+        }).catch(()=>{
+          alert('There was an error! Please re-check your form.');
         });
     }
 
@@ -64,6 +81,14 @@ class  RestaurantsList  extends  Component {
                     <td>
                     <button  onClick={(e)=>  this.handleDelete(e,c.pk) }> Delete</button>
                     <a  href={"/restaurant/" + c.pk}> Update</a>
+                    <button  onClick={(e)=>  this.handleResistanceCreate(e,c.pk) }> Resist</button>
+                    <form onSubmit={this.handleResistanceCreate}>
+                      <div className="form-group">
+                        <input className="form-control" type="text" ref='resistance'/>
+
+                        <input className="btn btn-primary" type="submit" value="Submit" />
+                        </div>
+                      </form>
                     </td>
                 </tr>)}
                 </tbody>
