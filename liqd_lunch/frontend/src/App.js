@@ -10,21 +10,15 @@ import './App.css';
 
 const BaseLayout = () => (
   <div className="container-fluid">
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="#">Django React Demo</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div className="navbar-nav">
-      <a className="nav-item nav-link" href="/">Restaurants</a>
-      <a className="nav-item nav-link" href="/restaurant">Create Restaurant</a>
-      <a className="nav-item nav-link" href="/resistances">Resistance List</a>
-      <a className="nav-item nav-link" href="/resistance">Create Resistance</a>
-
-    </div>
-  </div>
-</nav>
+    <nav className="navbar navbar-default">
+      <a className="navbar-brand" href="#"><img src="wobble.png" width="30" height="30" alt=""></img>Liquid Lunch</a>
+      <div className="navbar">
+        <a className="nav-item nav-link" href="/">Restaurants</a>
+        <a className="nav-item nav-link" href="/restaurant">Create Restaurant</a>
+        <a className="nav-item nav-link" href="/resistances">Resistance List</a>
+        <a className="nav-item nav-link" href="/resistance">Create Resistance</a>
+      </div>
+    </nav>
 
     <div className="content">
       <Route path="/" exact component={RestaurantsList} />
@@ -33,7 +27,6 @@ const BaseLayout = () => (
       <Route path="/resistances/" exact component={ResistanceList} />
       <Route path="/resistance/:pk"  component={ResistanceCreateUpdate} />
       <Route path="/resistance/" exact component={ResistanceCreateUpdate} />
-
     </div>
 
   </div>

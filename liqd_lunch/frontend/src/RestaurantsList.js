@@ -22,7 +22,10 @@ class  RestaurantsList  extends  Component {
         var  self  =  this;
         restaurantsService.getRestaurants().then(function (result) {
             console.log(result);
-            self.setState({ restaurants:  result.data, nextPageURL:  result.nextlink})
+            self.setState({
+              restaurants:  result.data,
+              nextPageURL:  result.nextlink,
+            })
         });
     }
 
@@ -41,11 +44,11 @@ class  RestaurantsList  extends  Component {
         var  self  =  this;
         resistanceService.createResistance(
           {
-            "restaurant":  rest_pk,
-            "resistance": 5
+            "restaurant": rest_pk,
+            "resistance": e.target.value
         }
         ).then((result)=>{
-          alert("Resistance created!");
+          '';
         }).catch(()=>{
           alert('There was an error! Please re-check your form.');
         });
@@ -62,38 +65,25 @@ class  RestaurantsList  extends  Component {
     render() {
 
         return (
-            <div className="restaurants--list">
-                <table className="table">
-                <thead key="thead">
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Link</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div className="restaurants--list row justify-content-center">
+              <div className="col-sm-8 col-md-6 col-lg-4">
+                <form onSubmit={this.handleResistanceCreate}>
                 {this.state.restaurants.map( c  =>
-                    <tr  key={c.pk}>
-                    <td>{c.pk}  </td>
-                    <td>{c.name}</td>
-                    <td>{c.link}</td>
-                    <td>
-                    <button  onClick={(e)=>  this.handleDelete(e,c.pk) }> Delete</button>
-                    <a  href={"/restaurant/" + c.pk}> Update</a>
-                    <button  onClick={(e)=>  this.handleResistanceCreate(e,c.pk) }> Resist</button>
-                    <form onSubmit={this.handleResistanceCreate}>
-                      <div className="form-group">
-                        <input className="form-control" type="text" ref='resistance'/>
-
-                        <input className="btn btn-primary" type="submit" value="Submit" />
+                    <div className="py-3 form-group" key={c.pk}>
+                        <div className="d-flex justify-content-between">
+                            <label htmlFor={"restaurant" + c.pk}>{c.name}</label>
+                            <button className="btn btn-link" onClick={(e)=>  this.handleDelete(e,c.pk) }> Delete</button>
+                            <a className="btn btn-link" href={"/restaurant/" + c.pk}> Update</a>
                         </div>
-                      </form>
-                    </td>
-                </tr>)}
-                </tbody>
-                </table>
-                <button  className="btn btn-primary"  onClick=  {  this.nextPage  }>Next</button>
+                        <input type="range" ref='resistance' className="custom-range w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk}  onChange={(e)=>  this.handleResistanceCreate(e,c.pk) }></input>
+                        <div className="d-flex justify-content-between">
+                          <span>Nope</span>
+                          <span>Yeah</span>
+                        </div>
+                    </div>)}
+                    <input className="btn btn-primary" type="submit" value="Submit" />
+                  </form>
+                </div>
             </div>
         );
     }
