@@ -23,4 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/restaurants/$', consent_views.restaurant_list),
     url(r'^api/restaurants/(?P<pk>[0-9]+)$', consent_views.restaurant_detail),
+    url(r'^api/resistance/$', consent_views.resistance_list),
+    url(r'^api/resistance/(?P<pk>[0-9]+)$', consent_views.resistance_detail),
 ]
