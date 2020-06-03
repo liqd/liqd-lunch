@@ -18,7 +18,6 @@ class  ResistanceList  extends  Component {
     componentDidMount() {
         var  self  =  this;
         resistanceService.getResistances().then(function (result) {
-            console.log(result);
             self.setState({ resistances:  result.data, nextPageURL:  result.nextlink})
         });
     }
@@ -36,7 +35,6 @@ class  ResistanceList  extends  Component {
 
     nextPage(){
         var  self  =  this;
-        console.log(this.state.nextPageURL);
         resistanceService.getResistancesByURL(this.state.nextPageURL).then((result) => {
             self.setState({ resistances:  result.data, nextPageURL:  result.nextlink})
         });

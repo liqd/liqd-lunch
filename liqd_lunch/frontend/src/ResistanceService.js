@@ -3,7 +3,7 @@ const API_URL = 'http://localhost:8000';
 
 export default class ResistanceService{
 
-    constructor(){}
+    //constructor(){}
 
 
     getResistances() {
