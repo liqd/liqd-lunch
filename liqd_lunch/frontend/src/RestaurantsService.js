@@ -3,7 +3,7 @@ const API_URL = 'http://localhost:8000';
 
 export default class RestaurantsService{
 
-    constructor(){}
+    //constructor(){}
 
 
     getRestaurants() {

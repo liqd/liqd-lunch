@@ -22,7 +22,6 @@ class  RestaurantsList  extends  Component {
     componentDidMount() {
         var  self  =  this;
         restaurantsService.getRestaurants().then(function (result) {
-            console.log(result);
             self.setState({
               restaurants:  result.data,
               nextPageURL:  result.nextlink,
@@ -42,7 +41,7 @@ class  RestaurantsList  extends  Component {
     }
 
     handleResistanceCreate(e,rest_pk){
-        var  self  =  this;
+        //var  self  =  this;
         resistanceService.createResistance(
           {
             "restaurant": rest_pk,
