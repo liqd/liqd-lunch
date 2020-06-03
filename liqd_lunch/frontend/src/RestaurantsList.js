@@ -75,7 +75,7 @@ class  RestaurantsList  extends  Component {
                             <button className="btn btn-link" onClick={(e)=>  this.handleDelete(e,c.pk) }> Delete</button>
                             <a className="btn btn-link" href={"/restaurant/" + c.pk}> Update</a>
                         </div>
-                        <input type="range" ref={this.resistanceRef} className="custom-range w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk}  onChange={(e)=>  this.handleResistanceCreate(e,c.pk) }></input>
+                        <input type="range" ref='resistance' className="custom-range w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk} onClick={(e)=>  this.handleResistanceCreate(e,c.pk) }></input>
                         <div className="d-flex justify-content-between">
                           <span>Nope</span>
                           <span>Yeah</span>
