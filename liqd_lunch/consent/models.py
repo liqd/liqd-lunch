@@ -1,5 +1,8 @@
+import datetime
+
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.db.models import Sum
 from django.utils import timezone
 
 
@@ -13,6 +16,11 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_total_resistance_today(self):
+
+        return self.resistance_set.filter(created__date=datetime.date.today())\
+                .aggregate(Sum('resistance'))['resistance__sum']
 
 
 class Resistance(models.Model):
