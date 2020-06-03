@@ -10,7 +10,7 @@ import './App.css';
 const BaseLayout = () => (
   <div className="container-fluid">
     <nav className="navbar navbar-default">
-      <a className="navbar-brand" href="/"><img src="wobble.png" width="30" height="30" alt=""></img>Liquid Lunch</a>
+      <a className="navbar-brand" href="/"><img src="images/wobble.png" width="30" height="30" alt=""></img>Liquid Lunch</a>
       <div className="navbar">
         <a className="nav-item nav-link" href="/">Restaurants</a>
         <a className="nav-item nav-link" href="/restaurant">Create Restaurant</a>
