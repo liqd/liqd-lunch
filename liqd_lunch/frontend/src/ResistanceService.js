@@ -14,19 +14,7 @@ export default class ResistanceService{
     const url = `${API_URL}${link}`;
     return axios.get(url).then(response => response.data);
     }
-    getResistance(pk) {
-        const url = `${API_URL}/api/resistance/${pk}`;
-        return axios.get(url).then(response => response.data);
-    }
-    deleteResistance(resistance){
-        const url = `${API_URL}/api/resistance/${resistance.pk}`;
-        return axios.delete(url);
-    }
     createResistance(resistance){
         const url = `${API_URL}/api/resistance/`;
         return axios.post(url,resistance);
-    }
-    updateResistance(resistance){
-        const url = `${API_URL}/api/resistance/${resistance.pk}`;
-        return axios.put(url,resistance);
     }}

@@ -12,24 +12,12 @@ class  ResistanceList  extends  Component {
             nextPageURL:  ''
         };
         this.nextPage  =  this.nextPage.bind(this);
-        this.handleDelete  =  this.handleDelete.bind(this);
     }
 
     componentDidMount() {
         var  self  =  this;
         resistanceService.getResistances().then(function (result) {
             self.setState({ resistances:  result.data, nextPageURL:  result.nextlink})
-        });
-    }
-
-    handleDelete(e,pk){
-        var  self  =  this;
-        resistanceService.deleteResistance({pk :  pk}).then(()=>{
-            var  newArr  =  self.state.resistances.filter(function(obj) {
-                return  obj.pk  !==  pk;
-            });
-
-            self.setState({resistances:  newArr})
         });
     }
 
