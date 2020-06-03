@@ -31,23 +31,19 @@ class  ResistanceList  extends  Component {
     render() {
 
         return (
-            <div className="restaurants--list">
-                <table className="table">
-                <thead key="thead">
-                <tr>
-                    <th>Restaurant</th>
-                    <th>Total Resistance</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div className="restaurants--list row justify-content-center">
+              <div className="col-sm-8 col-md-6 col-lg-4">
+                <div className="py-3 d-flex justify-content-between">
+                  <span>Restaurant</span>
+                  <span className="ml-auto">Total Resistance</span>
+                </div>
                 {this.state.resistances.map( c  =>
-                    <tr  key={c.pk}>
-                    <td>{c.name}  </td>
-                    <td>{c.total_resistance}</td>
-                </tr>)}
-                </tbody>
-                </table>
+                  <div className="py-3 d-flex justify-content-between" key={c.pk}>
+                    <span>{c.name}</span>
+                    <span>{c.total_resistance}</span>
+                  </div>)}
                 <button  className="btn btn-primary"  onClick=  {  this.nextPage  }>Next</button>
+              </div>
             </div>
         );
     }
