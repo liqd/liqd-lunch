@@ -22,4 +22,4 @@ class TotalResistanceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Restaurant
-        fields = ('name', 'total_resistance')
+        fields = ('pk', 'name', 'total_resistance')
