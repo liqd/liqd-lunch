@@ -49,24 +49,15 @@ class  ResistanceList  extends  Component {
                 <table className="table">
                 <thead key="thead">
                 <tr>
-                    <th>#</th>
                     <th>Restaurant</th>
-                    <th>Resistance</th>
-                    <th>Created</th>
-                    <th>Actions</th>
+                    <th>Total Resistance</th>
                 </tr>
                 </thead>
                 <tbody>
                 {this.state.resistances.map( c  =>
                     <tr  key={c.pk}>
-                    <td>{c.pk}  </td>
-                    <td>{c.restaurant}</td>
-                    <td>{c.resistance}</td>
-                    <td>{c.created}</td>
-                    <td>
-                    <button  onClick={(e)=>  this.handleDelete(e,c.pk) }> Delete</button>
-                    <a  href={"/resistance/" + c.pk}> Update</a>
-                    </td>
+                    <td>{c.name}  </td>
+                    <td>{c.total_resistance}</td>
                 </tr>)}
                 </tbody>
                 </table>
