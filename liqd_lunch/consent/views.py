@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -75,9 +77,9 @@ def resistance_list(request):
         data = []
         nextPage = 1
         previousPage = 1
-        resistance = models.Resistance.objects.all()
+        restaurants = models.Restaurant.objects.all()
         page = request.GET.get('page', 1)
-        paginator = Paginator(resistance, 10)
+        paginator = Paginator(restaurants, 10)
         try:
             data = paginator.page(page)
         except PageNotAnInteger:
@@ -85,7 +87,7 @@ def resistance_list(request):
         except EmptyPage:
             data = paginator.page(paginator.num_pages)
 
-        serializer = serializers.ResistanceSerializer(data, context={'request': request}, many=True)
+        serializer = serializers.TotalResistanceSerializer(data, context={'request': request}, many=True)
         if data.has_next():
             nextPage = data.next_page_number()
         if data.has_previous():
