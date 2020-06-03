@@ -59,7 +59,7 @@ class  RestaurantsList  extends  Component {
         resistanceService.createResistance(
           {
             "restaurant": rest_pk,
-            "resistance": this.state.resistanceList
+            "resistance": e.rest_pk.value
         }
         ).then((result)=>{
           'Your answers were submitted successfully!';
@@ -92,6 +92,7 @@ class  RestaurantsList  extends  Component {
                         <input type="range" ref='resistance' className="custom-range w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk} onClick={this.handleResistanceCreate.bind(this)}></input>
                         <div className="d-flex justify-content-between">
                           <span>Nope</span>
+                          <span>{this.state.resistanceScore}</span>
                           <span>Yeah</span>
                         </div>
                     </div>)}
