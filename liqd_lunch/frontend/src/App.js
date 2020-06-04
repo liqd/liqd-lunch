@@ -9,14 +9,11 @@ import './App.css';
 
 const BaseLayout = () => (
   <div className="container-fluid">
-    <nav className="navbar navbar-default">
-      <a className="navbar-brand" href="/"><img src="images/wobble.png" width="30" height="30" alt=""></img>Liquid Lunch</a>
-      <div className="navbar">
-        <a className="nav-item nav-link" href="/">Restaurants</a>
-        <a className="nav-item nav-link" href="/restaurant">Create Restaurant</a>
-        <a className="nav-item nav-link" href="/resistances">Resistance List</a>
+      <div className="d-flex justify-content-center navbar__brand m-2">
+        <img className="mr-2" src="images/wobble.png" width="30" height="30" alt="">
+        </img>
+        <span>Liquid Lunch</span>
       </div>
-    </nav>
 
     <div className="content">
       <Route path="/" exact component={RestaurantsList} />
@@ -24,6 +21,13 @@ const BaseLayout = () => (
       <Route path="/restaurant/" exact component={RestaurantCreateUpdate} />
       <Route path="/resistances/" exact component={ResistanceList} />
     </div>
+    <nav className="navbar navbar-default d-flex justify-content-center">
+      <div className="navbar">
+        <a className="nav-item nav-link" href="/">Restaurants</a>
+        <a className="nav-item nav-link" href="/restaurant">Create Restaurant</a>
+        <a className="nav-item nav-link" href="/resistances">Resistance List</a>
+      </div>
+    </nav>
 
   </div>
 )
