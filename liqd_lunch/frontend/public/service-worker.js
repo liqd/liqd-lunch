@@ -10,7 +10,6 @@ const URLS_TO_CACHE = [
   '/manifest.json',
   '/service-worker.js',
   '/offline.html',
-  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
   '/api/resistance/',
   '/api/restaurants/',
   '/',
@@ -48,12 +47,6 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   var requestURL = new URL(event.request.url);
-
-  // cdn - prefetched
-  if (requestURL.hostname == 'maxcdn.bootstrapcdn.com') {
-    event.respondWith(caches.match(event.request));
-    return;
-  }
 
   // backend
   if (requestURL.origin == API_ORIGIN) {
