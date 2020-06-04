@@ -6,6 +6,7 @@ const URLS_TO_CACHE = [
   '/static/js/0.chunk.js',
   '/images/food-144.png',
   '/images/favicon.ico',
+  '/images/spinner.svg',
   '/images/wobble.png',
   '/manifest.json',
   '/service-worker.js',

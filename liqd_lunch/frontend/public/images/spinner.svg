@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="40px" viewBox="0 0 38 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Spinner</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Im-out-Copy" transform="translate(-141.000000, -265.000000)" fill="#060606">
+            <path d="M156.151284,264.999798 L156.890591,267.907998 C149.487056,269.745782 144,276.435972 144,284.407988 C144,293.796988 151.611,301.407988 161,301.407988 C167.659035,301.407988 173.423704,297.579514 176.213025,292.003547 L178.894024,293.350932 C175.611028,299.906987 168.831037,304.407988 161,304.407988 C149.9545,304.407988 141,295.453488 141,284.407988 C141,275.034583 147.4486,267.167014 156.151284,264.999798 Z" id="Spinner"></path>
+        </g>
+    </g>
+</svg>
