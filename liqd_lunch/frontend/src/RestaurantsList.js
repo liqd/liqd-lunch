@@ -86,16 +86,20 @@ class  RestaurantsList  extends  Component {
                     <div className="py-3 form-group" key={c.pk}>
                         <div className="d-flex justify-content-between">
                             <label htmlFor={"restaurant" + c.pk}>{c.name}</label>
-                            <button className="btn btn-link" onClick={(e)=>  this.handleDelete(e, c.pk) }> Delete</button>
-                            <a className="btn btn-link" href={"/restaurant/" + c.pk}> Update</a>
+                            <span>
+                              <a className="btn btn-link btn-sm text-muted" href={"/restaurant/" + c.pk}> Update</a>
+                              <button className="btn btn-link btn-sm text-muted" onClick={(e)=>  this.handleDelete(e, c.pk) }> Delete</button>
+                            </span>
                         </div>
-                        <input type="range" ref={this.resistanceRef} className="custom-range w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk} onClick={(e)=> this.handleSliderChange(e, c.pk)}></input>
+                        <input type="range" ref={this.resistanceRef} className="custom-range mt-2 w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk} onClick={(e)=> this.handleSliderChange(e, c.pk)}></input>
                         <div className="d-flex justify-content-between">
-                          <span>Nope</span>
                           <span>Yeah</span>
+                          <span>Nope</span>
                         </div>
                     </div>)}
-                    <button className="btn btn-primary" type="submit" value="Submit" onClick={this.handleFormSubmit}>Submit</button>
+                    <div className="d-flex justify-content-end">
+                      <button className="btn btn-dark text-uppercase ml-auto" type="submit" value="Submit" onClick={this.handleFormSubmit}>Submit</button>
+                    </div>
                 </div>
             </div>
         );

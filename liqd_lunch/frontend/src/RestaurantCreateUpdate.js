@@ -73,7 +73,7 @@ class RestaurantCreateUpdate extends Component {
               Link:</label>
               <input className="form-control" type="text" ref='link'/>
 
-            <input className="btn btn-primary" type="submit" value="Submit" />
+            <input className="btn btn-dark text-uppercase" type="submit" value="Submit" />
             </div>
           </form>
         );
