@@ -21,11 +21,21 @@ class  ResistanceList  extends  Component {
         });
     }
 
-    nextPage(){
+    nextPage() {
         var  self  =  this;
         resistanceService.getResistancesByURL(this.state.nextPageURL).then((result) => {
             self.setState({ resistances:  result.data, nextPageURL:  result.nextlink})
         });
+    }
+
+    loadSpinner() {
+      var spinner
+      if (false) {
+        spinner = <div className="pl-1 pt-1"><div className="loader"></div></div>
+      }
+      return (
+        spinner
+      )
     }
 
     render() {
@@ -33,16 +43,22 @@ class  ResistanceList  extends  Component {
         return (
             <div className="restaurants--list row justify-content-center">
               <div className="col-sm-8 col-md-6 col-lg-4">
+                <h1>Here you go!</h1>
                 <div className="py-3 d-flex justify-content-between">
-                  <span>Restaurant</span>
-                  <span className="ml-auto">Total Resistance</span>
+                  <span className="text__md">Restaurant</span>
+                  <span className="ml-auto text__md">Total Resistance</span>
+                  { this.loadSpinner() }
                 </div>
                 {this.state.resistances.map( c  =>
                   <div className="py-3 d-flex justify-content-between" key={c.pk}>
                     <span>{c.name}</span>
                     <span>{c.total_resistance}</span>
                   </div>)}
-                <button  className="btn btn-primary"  onClick=  {  this.nextPage  }>Next</button>
+                  {this.state.nextPageURL == '' &&
+                  <div className="d-flex justify-content-end">
+                    <button  className="btn btn-dark text-uppercase"  onClick=  {  this.nextPage  }>Next</button>
+                  </div>
+                }
               </div>
             </div>
         );
