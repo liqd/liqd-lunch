@@ -9,16 +9,19 @@ class  ResistanceList  extends  Component {
         super(props);
         this.state  = {
             resistances: [],
-            nextPageURL:  ''
+            nextPageURL:  '',
+            showResult: false
         };
         this.nextPage  =  this.nextPage.bind(this);
+        this.setShowResult = this.setShowResult.bind(this);
     }
 
     componentDidMount() {
         var  self  =  this;
         resistanceService.getResistances().then(function (result) {
-            self.setState({ resistances:  result.data, nextPageURL:  result.nextlink})
+            self.setState({ resistances:  result.data.sort((a,b) => a.total_resistance - b.total_resistance), nextPageURL:  result.nextlink})
         });
+        setInterval(this.setShowResult, 5000);
     }
 
     nextPage() {
@@ -38,28 +41,49 @@ class  ResistanceList  extends  Component {
       )
     }
 
+    setShowResult() {
+      this.setState({showResult: !this.state.showResult})
+    }
+
     render() {
+        var minResistanceValue = Math.min.apply(Math, this.state.resistances.map(function(r) { return r.total_resistance; }))
+        var minResistances = this.state.resistances.filter(function(r){ return r.total_resistance == minResistanceValue })
+
+        var content;
+        const date = new Date()
+        if (this.state.showResult) {
+              content =     <div className="restaurants--list">
+                                <span className="text-muted">We are going to</span>
+                                {minResistances.map( c  =>
+                                <div className="row justify-content-center">
+                                    <h2>{c.name}</h2>
+                                </div>)}
+                            </div>
+        }
+        else {
+              content =     <div className="col-sm-8 col-md-6 col-lg-4">
+                                <h1>Here you go!</h1>
+                                <div className="py-3 d-flex justify-content-between">
+                                    <span className="text__md">Restaurant</span>
+                                    <span className="ml-auto text__md">Total Resistance</span>
+                                    { this.loadSpinner() }
+                                </div>
+                                {this.state.resistances.map( c  =>
+                                <div className="py-3 d-flex justify-content-between" key={c.pk}>
+                                    <span>{c.name}</span>
+                                    <span>{c.total_resistance}</span>
+                                </div>)}
+                                {this.state.nextPageURL === '' &&
+                                <div className="d-flex justify-content-end">
+                                    <button  className="btn btn-dark text-uppercase"  onClick=  {  this.nextPage  }>Next</button>
+                                </div>
+                                }
+                            </div>
+        }
 
         return (
             <div className="restaurants--list row justify-content-center">
-              <div className="col-sm-8 col-md-6 col-lg-4">
-                <h1>Here you go!</h1>
-                <div className="py-3 d-flex justify-content-between">
-                  <span className="text__md">Restaurant</span>
-                  <span className="ml-auto text__md">Total Resistance</span>
-                  { this.loadSpinner() }
-                </div>
-                {this.state.resistances.map( c  =>
-                  <div className="py-3 d-flex justify-content-between" key={c.pk}>
-                    <span>{c.name}</span>
-                    <span>{c.total_resistance}</span>
-                  </div>)}
-                  {this.state.nextPageURL === '' &&
-                  <div className="d-flex justify-content-end">
-                    <button  className="btn btn-dark text-uppercase"  onClick=  {  this.nextPage  }>Next</button>
-                  </div>
-                }
-              </div>
+            {content}
             </div>
         );
     }
