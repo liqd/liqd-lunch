@@ -54,7 +54,7 @@ class  ResistanceList  extends  Component {
                     <span>{c.name}</span>
                     <span>{c.total_resistance}</span>
                   </div>)}
-                  {this.state.nextPageURL == '' &&
+                  {this.state.nextPageURL === '' &&
                   <div className="d-flex justify-content-end">
                     <button  className="btn btn-dark text-uppercase"  onClick=  {  this.nextPage  }>Next</button>
                   </div>

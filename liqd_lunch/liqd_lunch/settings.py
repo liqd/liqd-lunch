@@ -126,5 +126,7 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
+       'https://lunch.liqd.net',
        'http://localhost:3000',
+       'http://localhost:5000'
 )

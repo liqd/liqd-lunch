@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8000';
+const API_URL = '/api/restaurants/';
 
 export default class RestaurantsService{
 
@@ -7,7 +7,7 @@ export default class RestaurantsService{
 
 
     getRestaurants() {
-        const url = `${API_URL}/api/restaurants/`;
+        const url = `${API_URL}`;
         return axios.get(url).then(response => response.data);
     }
     getRestaurantsByURL(link){
@@ -15,18 +15,18 @@ export default class RestaurantsService{
     return axios.get(url).then(response => response.data);
     }
     getRestaurant(pk) {
-        const url = `${API_URL}/api/restaurants/${pk}`;
+        const url = `${API_URL}${pk}`;
         return axios.get(url).then(response => response.data);
     }
     deleteRestaurant(restaurant){
-        const url = `${API_URL}/api/restaurants/${restaurant.pk}`;
+        const url = `${API_URL}${restaurant.pk}`;
         return axios.delete(url);
     }
     createRestaurant(restaurant){
-        const url = `${API_URL}/api/restaurants/`;
+        const url = `${API_URL}`;
         return axios.post(url,restaurant);
     }
     updateRestaurant(restaurant){
-        const url = `${API_URL}/api/restaurants/${restaurant.pk}`;
+        const url = `${API_URL}${restaurant.pk}`;
         return axios.put(url,restaurant);
     }}

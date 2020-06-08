@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8000';
+const API_URL = '/api/resistance/';
 
 export default class ResistanceService{
 
@@ -7,7 +7,7 @@ export default class ResistanceService{
 
 
     getResistances() {
-        const url = `${API_URL}/api/resistance/`;
+        const url = `${API_URL}`;
         return axios.get(url).then(response => response.data);
     }
     getResistancesByURL(link){
@@ -15,6 +15,6 @@ export default class ResistanceService{
     return axios.get(url).then(response => response.data);
     }
     createResistance(resistance){
-        const url = `${API_URL}/api/resistance/`;
+        const url = `${API_URL}`;
         return axios.post(url,resistance);
     }}

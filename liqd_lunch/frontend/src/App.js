@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 
-import  ResistanceList from './ResistanceList'
-import  RestaurantsList from './RestaurantsList'
-import  RestaurantCreateUpdate  from './RestaurantCreateUpdate'
+import ResistanceList from './ResistanceList'
+import RestaurantsList from './RestaurantsList'
+import RestaurantCreateUpdate  from './RestaurantCreateUpdate'
 import './App.css';
+import LogoWobble from './images/wobble.png'
 
 const BaseLayout = () => (
   <div className="container-fluid">
       <div className="d-flex justify-content-center navbar__brand m-2">
-        <img className="mr-2" src="images/wobble.png" width="30" height="30" alt="">
+        <img className="mr-2" src={LogoWobble} width="30" height="30" alt="">
         </img>
         <span>Liquid Lunch</span>
       </div>
