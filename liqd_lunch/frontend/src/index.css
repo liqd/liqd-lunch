@@ -49,6 +49,11 @@ a {
     box-shadow: 0 0 3px #b7b7b7;
 }
 
+.loader__position {
+    position: absolute;
+    right: -1rem;
+}
+
 .loader {
     border: 2px solid #000; /* Light grey */
     border-top: 2px solid #fbfbfb;
