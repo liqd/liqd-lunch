@@ -30,7 +30,7 @@ class  ResistanceList  extends  Component {
     }
 
     nextPage() {
-        var  self  =  this;
+        const  self  =  this;
         resistanceService.getResistancesByURL(this.state.nextPageURL).then((result) => {
             self.setState({ resistances:  result.data, nextPageURL:  result.nextlink})
         });
@@ -38,7 +38,7 @@ class  ResistanceList  extends  Component {
 
     getItems () {
       this.setState({ isLoading: true})
-      var  self  =  this;
+      const  self  =  this;
       if (!this.state.pollingPaused) {
         resistanceService.getResistances().then(function (result) {
           self.setState({
@@ -51,7 +51,7 @@ class  ResistanceList  extends  Component {
     }
 
     loadSpinner() {
-      var spinner
+      let spinner
       if (this.state.isLoading) {
         spinner = <div className="loader__position pt-1"><span className="sr-only">Loading...</span><div className="loader"></div></div>
       }
@@ -75,10 +75,10 @@ class  ResistanceList  extends  Component {
     }
 
     render() {
-        var minResistanceValue = Math.min.apply(Math, this.state.resistances.map(function(r) { return r.total_resistance; }))
-        var minResistances = this.state.resistances.filter(function(r){ return r.total_resistance === minResistanceValue })
+        let minResistanceValue = Math.min.apply(Math, this.state.resistances.map(function(r) { return r.total_resistance; }))
+        let minResistances = this.state.resistances.filter(function(r){ return r.total_resistance === minResistanceValue })
 
-        var content;
+        let content
         if (this.state.showResult) {
               content =     <div className="restaurants__winner my-5">
                               <div className="row justify-content-center my-3">
