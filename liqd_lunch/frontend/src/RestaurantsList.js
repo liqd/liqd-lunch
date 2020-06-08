@@ -56,8 +56,6 @@ class  RestaurantsList  extends  Component {
         let promise = resistanceService.createResistance({
             "restaurant": rest_pk,
             "resistance": resistance
-        }).catch(()=>{
-          alert('There was an error! Please re-check your form.');
         });
         promiseList.push(promise)
       }
