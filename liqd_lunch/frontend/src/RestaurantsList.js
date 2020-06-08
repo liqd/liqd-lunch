@@ -87,29 +87,29 @@ class RestaurantsList extends Component {
 
   render() {
 
-    return (
-      <div className="restaurants--list row justify-content-center">
-        <div className="col-sm-8 col-md-6 col-lg-4">
-          {this.state.restaurants.map( c  =>
-            <div className="py-3 form-group" key={c.pk}>
-              <div className="d-flex justify-content-between">
-                <label htmlFor={"restaurant" + c.pk}>{c.name}</label>
-                <span>
-                  <a className="btn btn-link btn-sm text-muted" href={"/restaurant/" + c.pk}> Update</a>
-                  <button className="btn btn-link btn-sm text-muted" onClick={(e)=>  this.handleDelete(e, c.pk) }> Delete</button>
-                </span>
-              </div>
-              <input type="range" ref={this.resistanceRef} className="custom-range mt-2 w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk} onClick={(e)=> this.handleSliderChange(e, c.pk)}></input>
-              <div className="d-flex justify-content-between">
-                <span>Yeah</span>
-                <span>Nope</span>
-              </div>
-            </div>)}
-            <div className="d-flex justify-content-end">
-              <button className="btn btn-dark text-uppercase ml-auto" type="submit" value="Submit" onClick={this.handleFormSubmit}>Submit</button>
+        return (
+            <div className="restaurants--list row justify-content-center">
+              <div className="col-sm-8 col-md-6 col-lg-4">
+                {this.state.restaurants.map( c  =>
+                    <div className="p-3 form-group" key={c.pk}>
+                        <div className="d-flex justify-content-between">
+                            <label htmlFor={"restaurant" + c.pk}>{c.name}</label>
+                            <span>
+                              <a className="btn btn-link btn-sm text-muted" href={"/restaurant/" + c.pk}> Update</a>
+                              <button className="btn btn-link btn-sm text-muted" onClick={(e)=>  this.handleDelete(e, c.pk) }> Delete</button>
+                            </span>
+                        </div>
+                        <input type="range" ref={this.resistanceRef} className="custom-range mt-2 w-100" defaultValue="0" min="0" max="10" id={"restaurant" + c.pk} onClick={(e)=> this.handleSliderChange(e, c.pk)}></input>
+                        <div className="d-flex justify-content-between">
+                          <span>Yeah</span>
+                          <span>Nope</span>
+                        </div>
+                    </div>)}
+                    <div className="d-flex justify-content-end px-3">
+                      <button className="btn btn-dark text-uppercase ml-auto" type="submit" value="Submit" onClick={this.handleFormSubmit}>Submit</button>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
     );
   }
 }
