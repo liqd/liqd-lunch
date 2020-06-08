@@ -18,9 +18,15 @@ class Restaurant(models.Model):
         return self.name
 
     def get_total_resistance_today(self):
+        noon = datetime.time(12, 0, 0)
+        total_resistance = self.resistance_set.filter(created__date=datetime.date.today())\
+                            .filter(created__time__lte=noon)\
+                            .aggregate(Sum('resistance'))['resistance__sum']
 
-        return self.resistance_set.filter(created__date=datetime.date.today())\
-                .aggregate(Sum('resistance'))['resistance__sum']
+        if total_resistance:
+            return total_resistance
+        else:
+            return 0
 
 
 class Resistance(models.Model):
