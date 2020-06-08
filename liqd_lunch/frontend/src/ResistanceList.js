@@ -13,7 +13,6 @@ class  ResistanceList  extends  Component {
             showResult: this.timeForLunch(),
             pollingPaused: false,
             isLoading: false
-=======
         };
         this.nextPage  =  this.nextPage.bind(this);
         this.setShowResult = this.setShowResult.bind(this);
@@ -81,8 +80,15 @@ class  ResistanceList  extends  Component {
 
         var content;
         if (this.state.showResult) {
-              content =     <div className="restaurants--list">
-                                <span className="text-muted">We are going to</span>
+              content =     <div className="restaurants__winner my-5">
+                              <div className="row justify-content-center my-3">
+                                <div class="checkmark">
+                                    <div class="checkmark_stem"></div>
+                                    <div class="checkmark_kick"></div>
+                                </div>
+                              </div>
+
+                                <div className="text__md text-muted">We are going to</div>
                                 {minResistances.map( c  =>
                                 <div className="row justify-content-center" key={c.pk}>
                                     <h2>{c.name}</h2>

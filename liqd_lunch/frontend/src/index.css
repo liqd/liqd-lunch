@@ -6,7 +6,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
+h1,
+h2 {
     font-family: "Plantin", "Times New Roman", serif;
     color: #000 !important;
     font-size: 2rem !important;
@@ -47,6 +48,35 @@ a {
     -moz-box-shadow: 0 0 3px #b7b7b7;
     -webkit-box-shadow: 0 0 3px #b7b7b7;
     box-shadow: 0 0 3px #b7b7b7;
+}
+
+.checkmark {
+    display:inline-block;
+    width: 30px;
+    height:30px;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+    border: 2px solid #000;
+    border-radius: 50%;
+}
+
+.checkmark_stem {
+    position: absolute;
+    width: 2px;
+    height: 13px;
+    background-color: #000;
+    left: 13px;
+    top: 6px;
+}
+
+.checkmark_kick {
+    position: absolute;
+    width: 7px;
+    height: 2px;
+    background-color: #000;
+    left: 8px;
+    top: 17px;
 }
 
 .loader__position {
