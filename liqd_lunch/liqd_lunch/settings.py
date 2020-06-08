@@ -25,7 +25,10 @@ SECRET_KEY = 'pkvt(7u3mcypyz))+mdozn-dcl56@14&(4+4zdeh3q9%1@@w!('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'lunch.liqd.net'
+]
 
 
 # Application definition
