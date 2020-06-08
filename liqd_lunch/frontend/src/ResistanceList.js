@@ -1,7 +1,7 @@
 import  React, { Component } from  'react';
 import  ResistanceService from  './ResistanceService';
 
-const  resistanceService  =  new  ResistanceService();
+const resistanceService  =  new  ResistanceService();
 
 class  ResistanceList  extends  Component {
 
@@ -10,10 +10,11 @@ class  ResistanceList  extends  Component {
         this.state  = {
             resistances: [],
             nextPageURL:  '',
-            showResult: false
+            showResult: this.timeForLunch()
         };
         this.nextPage  =  this.nextPage.bind(this);
         this.setShowResult = this.setShowResult.bind(this);
+        this.timer = null;
     }
 
     componentDidMount() {
@@ -21,7 +22,11 @@ class  ResistanceList  extends  Component {
         resistanceService.getResistances().then(function (result) {
             self.setState({ resistances:  result.data.sort((a,b) => a.total_resistance - b.total_resistance), nextPageURL:  result.nextlink})
         });
-        setInterval(this.setShowResult, 5000);
+        this.timer = setInterval(this.setShowResult, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer)
     }
 
     nextPage() {
@@ -41,21 +46,30 @@ class  ResistanceList  extends  Component {
       )
     }
 
+    timeForLunch() {
+      var now = new Date();
+      if (now.getHours() >= 12) {
+        return (true)
+      }
+      else {
+        return (false)
+      }
+    }
+
     setShowResult() {
-      this.setState({showResult: !this.state.showResult})
+      this.setState({showResult: this.timeForLunch()})
     }
 
     render() {
         var minResistanceValue = Math.min.apply(Math, this.state.resistances.map(function(r) { return r.total_resistance; }))
-        var minResistances = this.state.resistances.filter(function(r){ return r.total_resistance == minResistanceValue })
+        var minResistances = this.state.resistances.filter(function(r){ return r.total_resistance === minResistanceValue })
 
         var content;
-        const date = new Date()
         if (this.state.showResult) {
               content =     <div className="restaurants--list">
                                 <span className="text-muted">We are going to</span>
                                 {minResistances.map( c  =>
-                                <div className="row justify-content-center">
+                                <div className="row justify-content-center" key={c.pk}>
                                     <h2>{c.name}</h2>
                                 </div>)}
                             </div>
