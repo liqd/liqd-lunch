@@ -22,6 +22,11 @@ class  RestaurantsList  extends  Component {
 
     componentDidMount() {
         var  self  =  this;
+        if (this.timeForLunch()) {
+          if (window.confirm('Voting is closed, it is LUNCH TIME! See the result?')) {
+            window.location.href = "/resistances";
+          }
+        }
         restaurantsService.getRestaurants().then(function (result) {
             self.setState({
               restaurants:  result.data,
@@ -73,6 +78,10 @@ class  RestaurantsList  extends  Component {
         restaurantsService.getRestaurantsByURL(this.state.nextPageURL).then((result) => {
             self.setState({ restaurants:  result.data, nextPageURL:  result.nextlink})
         });
+    }
+
+    timeForLunch() {
+      return (new Date()).getHours() >= 12
     }
 
     render() {
