@@ -10,7 +10,8 @@ class  ResistanceList  extends  Component {
         this.state  = {
             resistances: [],
             nextPageURL:  '',
-            showResult: this.timeForLunch()
+            showResult: this.timeForLunch(),
+            pollingPaused: false
         };
         this.nextPage  =  this.nextPage.bind(this);
         this.setShowResult = this.setShowResult.bind(this);
@@ -18,10 +19,8 @@ class  ResistanceList  extends  Component {
     }
 
     componentDidMount() {
-        var  self  =  this;
-        resistanceService.getResistances().then(function (result) {
-            self.setState({ resistances:  result.data.sort((a,b) => a.total_resistance - b.total_resistance), nextPageURL:  result.nextlink})
-        });
+        this.getItems()
+        this.timer = setInterval(() => this.getItems(), 5000)
         this.timer = setInterval(this.setShowResult, 1000)
     }
 
@@ -36,9 +35,28 @@ class  ResistanceList  extends  Component {
         });
     }
 
+    getItems () {
+      var  self  =  this;
+      if (!this.state.pollingPaused) {
+        resistanceService.getResistances().then(function (result) {
+          self.setState({
+            resistances:  result.data,
+            nextPageURL:  result.nextlink
+          })
+        })
+      }
+    }
+
+    togglePollingPaused () {
+      const pollingPausedConst = !this.state.pollingPaused
+      this.setState({
+        pollingPaused: pollingPausedConst
+      })
+    }
+
     loadSpinner() {
       var spinner
-      if (false) {
+      if (this.state.pollingPaused) {
         spinner = <div className="pl-1 pt-1"><div className="loader"></div></div>
       }
       return (
