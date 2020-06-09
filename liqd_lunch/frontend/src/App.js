@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 
+import DefaultRoute from './DefaultRoute'
 import ResistanceList from './ResistanceList'
 import RestaurantsList from './RestaurantsList'
 import RestaurantCreateUpdate  from './RestaurantCreateUpdate'
@@ -17,16 +18,17 @@ const BaseLayout = () => (
       </div>
 
     <div className="content">
-      <Route path="/" exact component={RestaurantsList} />
+      <Route path="/" exact component={DefaultRoute} />
+      <Route path="/restaurants/" exact component={RestaurantsList} />
       <Route path="/restaurant/:pk"  component={RestaurantCreateUpdate} />
       <Route path="/restaurant/" exact component={RestaurantCreateUpdate} />
       <Route path="/resistances/" exact component={ResistanceList} />
     </div>
     <nav className="navbar navbar-default d-flex justify-content-center">
       <div className="navbar">
-        <a className="nav-item nav-link" href="/">Restaurants</a>
-        <a className="nav-item nav-link" href="/restaurant">Create Restaurant</a>
-        <a className="nav-item nav-link" href="/resistances">Resistance List</a>
+        <a className="nav-item nav-link" href="/restaurants">Restaurants</a>
+        <a className="nav-item nav-link" href="/resistances">Resistance List / Result</a>
+        <a className="nav-item nav-link" href="/restaurant">Add new Restaurant</a>
       </div>
     </nav>
 

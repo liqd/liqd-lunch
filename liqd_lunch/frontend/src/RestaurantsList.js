@@ -24,12 +24,6 @@ class RestaurantsList extends Component {
   }
 
   componentDidMount() {
-    const self = this
-    if (self.timeForLunch()) {
-      if (window.confirm('Voting is closed, it is LUNCH TIME! See the result?')) {
-        this.setState({ redirect: "/resistances" });
-      }
-    }
     this.getItems();
     this.timer = setInterval(() => this.getItems(), 5000)
   }
@@ -79,6 +73,9 @@ class RestaurantsList extends Component {
       promiseList.push(promise)
     }
     Promise.all(promiseList).then((values) => {
+      if(this.timeForLunch()) {
+        alert('Voting is closed already! Redirecting to result')
+      }
       this.setState({ redirect: "/resistances" });
     }).catch(()=>{
       alert('Liquid Lunch is currently offline, please try again when online.');
