@@ -19,17 +19,18 @@ class RestaurantsList extends Component {
     this.nextPage = this.nextPage.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.getItems = this.getItems.bind(this);
     this.resistanceRef = React.createRef()
-    this.timer = null;
+    this.itemTimer = null;
   }
 
   componentDidMount() {
     this.getItems();
-    this.timer = setInterval(() => this.getItems(), 5000)
+    this.itemTimer = setInterval(this.getItems, 5000)
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer)
+    clearInterval(this.itemTimer)
   }
 
   getItems () {
