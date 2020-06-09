@@ -1,8 +1,8 @@
 import {registerRoute} from 'workbox-routing';
-import {CacheFirst} from 'workbox-strategies';
+import {StaleWhileRevalidate} from 'workbox-strategies';
 
 registerRoute(
   ({url}) => url.pathname.startsWith('/api/'),
-  new CacheFirst()
+  new StaleWhileRevalidate()
 );
 
