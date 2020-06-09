@@ -15,18 +15,21 @@ class  ResistanceList  extends  Component {
             isLoading: false
         };
         this.nextPage  =  this.nextPage.bind(this);
+        this.getItems = this.getItems.bind(this);
         this.setShowResult = this.setShowResult.bind(this);
-        this.timer = null;
+        this.itemTimer = null;
+        this.resultTimer = null;
     }
 
     componentDidMount() {
         this.getItems()
-        this.timer = setInterval(() => this.getItems(), 5000)
-        this.timer = setInterval(this.setShowResult, 1000)
+        this.itemTimer = setInterval(this.getItems, 5000)
+        this.resultTimer = setInterval(this.setShowResult, 1000)
     }
 
     componentWillUnmount() {
-        clearInterval(this.timer)
+        clearInterval(this.itemTimer)
+        clearInterval(this.resultTimer)
     }
 
     nextPage() {
