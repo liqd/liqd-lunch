@@ -1,5 +1,6 @@
 import axios from 'axios';
-const API_URL = '/api/resistance/';
+import {API_HOST} from './config'
+const API_URL = API_HOST.concat('/api/resistance/');
 
 export default class ResistanceService{
 
