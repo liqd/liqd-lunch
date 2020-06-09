@@ -68,8 +68,7 @@ class RestaurantsList extends Component {
       promiseList.push(promise)
     }
     Promise.all(promiseList).then((values) => {
-      alert('Success');
-      window.location.href = "/resistances";
+      this.setState({ redirect: "/resistances" });
     }).catch(()=>{
       alert('Liquid Lunch is currently offline, please try again when online.');
     });
