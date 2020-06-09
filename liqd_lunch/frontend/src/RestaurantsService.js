@@ -1,5 +1,6 @@
 import axios from 'axios';
-const API_URL = '/api/restaurants/';
+import {API_HOST} from './config'
+const API_URL = API_HOST.concat('/api/restaurants/');
 
 export default class RestaurantsService{
 
