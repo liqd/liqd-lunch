@@ -42,7 +42,7 @@ class  ResistanceList  extends  Component {
       if (!this.state.pollingPaused) {
         resistanceService.getResistances().then(function (result) {
           self.setState({
-            resistances:  result.data,
+            resistances:  result.data.sort((a,b) => a.total_resistance - b.total_resistance),
             nextPageURL:  result.nextlink,
             isLoading: false
           })
@@ -61,13 +61,7 @@ class  ResistanceList  extends  Component {
     }
 
     timeForLunch() {
-      var now = new Date();
-      if (now.getHours() >= 12) {
-        return (true)
-      }
-      else {
-        return (false)
-      }
+      return (new Date()).getHours() >= 12
     }
 
     setShowResult() {
