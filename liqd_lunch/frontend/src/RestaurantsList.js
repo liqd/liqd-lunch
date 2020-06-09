@@ -20,6 +20,7 @@ class RestaurantsList extends Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.resistanceRef = React.createRef()
+    this.timer = null;
   }
 
   componentDidMount() {
@@ -29,12 +30,22 @@ class RestaurantsList extends Component {
         this.setState({ redirect: "/resistances" });
       }
     }
+    this.getItems();
+    this.timer = setInterval(() => this.getItems(), 5000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
+  getItems () {
+    const  self  =  this;
     restaurantsService.getRestaurants().then(function (result) {
       self.setState({
         restaurants: result.data,
-        nextPageURL: result.nextlink,
+        nextPageURL: result.nextlink
       })
-    });
+    })
   }
 
   handleDelete(e, pk){
